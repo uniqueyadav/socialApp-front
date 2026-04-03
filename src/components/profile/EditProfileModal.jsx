@@ -10,11 +10,11 @@ const EditProfileModal = ({ user, onClose, onSave }) => {
     username: '',
     bio: ''
   });
-  const [selectedFile, setSelectedFile] = useState(null); // Nayi file ke liye state
-  const [previewUrl, setPreviewUrl] = useState(''); // Local preview dikhane ke liye
+  const [selectedFile, setSelectedFile] = useState(null); 
+  const [previewUrl, setPreviewUrl] = useState(''); 
   const [loading, setLoading] = useState(false);
   
-  const fileInputRef = useRef(null); // Hidden input ko trigger karne ke liye
+  const fileInputRef = useRef(null); 
   const PF = import.meta.env.VITE_API_URL || "http://localhost:5000/";
 
   useEffect(() => {
@@ -23,7 +23,6 @@ const EditProfileModal = ({ user, onClose, onSave }) => {
         username: user.username || '',
         bio: user.bio || ''
       });
-      // Purani image ka full path set karna
       const currentPic = user.profilePic?.startsWith('http') 
         ? user.profilePic 
         : (user.profilePic ? (PF.endsWith('/') ? PF : PF + '/') + user.profilePic : 'https://via.placeholder.com/150');
@@ -31,12 +30,11 @@ const EditProfileModal = ({ user, onClose, onSave }) => {
     }
   }, [user, PF]);
 
-  // File select hone par handle karna
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
       setSelectedFile(file);
-      setPreviewUrl(URL.createObjectURL(file)); // Browser mein turant dikhane ke liye
+      setPreviewUrl(URL.createObjectURL(file)); 
     }
   };
 
@@ -45,15 +43,14 @@ const EditProfileModal = ({ user, onClose, onSave }) => {
     setLoading(true);
 
     try {
-      // System storage upload ke liye FormData zaroori hai
       const data = new FormData();
       data.append('username', formData.username);
       data.append('bio', formData.bio);
       if (selectedFile) {
-        data.append('profilePic', selectedFile); // Backend 'multer' isse hi 'profilePic' naam se pakdega
+        data.append('profilePic', selectedFile); 
       }
 
-      await onSave(data); // Profile.jsx wala handleSaveProfile function call hoga
+      await onSave(data); 
       onClose();
     } catch (error) {
       console.error("Profile update failed:", error);

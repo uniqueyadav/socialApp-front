@@ -25,7 +25,7 @@ const Login = () => {
     const result = await login(formData.email, formData.password);
     
     if (result.success) {
-      navigate('/'); // Login ke baad home par bhej do
+      navigate('/'); 
     } else {
       setLocalError(result.message);
     }

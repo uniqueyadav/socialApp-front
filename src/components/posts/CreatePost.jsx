@@ -18,7 +18,7 @@ const CreatePost = ({ refresh }) => {
       await axiosInstance.post('/posts', { content, fileUrl });
       setContent('');
       setFileUrl('');
-      refresh(); // Feed refresh karne ke liye
+      refresh(); 
     } catch (err) {
       console.error(err);
     } finally {

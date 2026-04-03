@@ -19,7 +19,6 @@ const CommentSection = ({ postId, comments, refresh }) => {
 
   return (
     <div className="p-3 bg-light border-top">
-      {/* Input */}
       <form onSubmit={handleAddComment} className="d-flex gap-2 mb-3">
         <input 
           type="text" 

@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthCont, AuthProvider } from './context/AuthCont';
 
-// Layout Components
 import Navbar from './components/layout/Navbar';
 import Sidebar from './components/layout/Sidebar';
 import Footer from './components/layout/Footer';
@@ -61,8 +60,6 @@ const AppContent = () => {
                   } 
                 />
                 
-                {/* --- Dynamic Profile Route --- */}
-                {/* Ye route khud ki aur dusron ki profile dono handle karega */}
                 <Route 
                   path="/profile/:id?" 
                   element={

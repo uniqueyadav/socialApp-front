@@ -68,8 +68,7 @@ export const AuthProvider = ({ children }) => {
         if (!updatedData) return;
 
         setUser((prevUser) => {
-            // Agar updatedData poora user object hai (jiski apni _id hai), toh usey hi use karo
-            // Warna purane user ke saath merge karo
+            
             const newUser = updatedData._id ? updatedData : { ...prevUser, ...updatedData };
             localStorage.setItem('userInfo', JSON.stringify(newUser));
             return newUser;

@@ -20,7 +20,6 @@ const Navbar = () => {
     navigate('/login');
   };
 
-  // Active link check karne ke liye helper
   const isActive = (path) => location.pathname === path ? 'text-primary' : 'text-secondary';
 
   return (
@@ -32,7 +31,6 @@ const Navbar = () => {
           <span style={{ letterSpacing: '-1px', fontSize: '1.5rem' }}>SocialApp</span>
         </Link>
 
-        {/* --- Search Bar (Desktop only for clean look) --- */}
         <div className="d-none d-md-flex mx-auto position-relative" style={{ width: '300px' }}>
           <Search className="position-absolute top-50 start-0 translate-middle-y ms-3 text-muted" size={18} />
           <input 
@@ -43,7 +41,6 @@ const Navbar = () => {
           />
         </div>
 
-        {/* --- Navigation Links & Profile --- */}
         <div className="d-flex align-items-center gap-3">
           <Link className={`nav-link p-2 rounded-circle hover-bg ${isActive('/')}`} to="/">
             <Home size={24} />

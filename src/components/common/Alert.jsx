@@ -3,8 +3,6 @@ import { AlertCircle, CheckCircle2, XCircle, Info } from 'lucide-react';
 
 const Alert = ({ message, type = "danger" }) => {
   if (!message) return null;
-
-  // Type ke hisab se icon select karne ka logic
   const getIcon = () => {
     switch (type) {
       case 'success': return <CheckCircle2 size={20} />;

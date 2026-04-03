@@ -15,7 +15,6 @@ const Profile = () => {
   // --- Backend Base URL Logic ---
   const PF = import.meta.env.VITE_API_URL || "https://socialapp-back.onrender.com/";
 
-  // Helper to get correct URL
   const getMediaUrl = (path) => {
     if (!path) return null;
     if (path.startsWith('http')) return path;
@@ -64,7 +63,6 @@ const Profile = () => {
   const handleOpenList = async (type) => {
     setModalTitle(type === 'followers' ? "Followers" : "Following");
     try {
-      // Dhyan de: Ye URL tere backend route se match hona chahiye
       const res = await axiosInstance.get(`/auth/${user._id}/friends`);
       const data = type === 'followers' ? res.data.followers : res.data.following;
       setListData(data || []);
@@ -78,15 +76,10 @@ const Profile = () => {
   // --- 4. Remove/Unfollow Logic (FIXED & SIMPLIFIED) ---
   const handleRemoveFriend = async (friendId) => {
     try {
-      // 1. Backend call (Database update) - Ab backend khud fresh user bhej raha hai
       const res = await axiosInstance.post(`/auth/follow/${friendId}`);
       
       if (res.status === 200) {
-        // 2. Modal ki list se turant UI filter karo
         setListData(prev => prev.filter(item => item._id !== friendId));
-
-        // 3. Backend se aaye huye fresh data se Context aur Storage update karo
-        // res.data.user mein populated followers/following hain
         updateLocalUser(res.data.user); 
         localStorage.setItem('userInfo', JSON.stringify(res.data.user));
 
@@ -167,7 +160,6 @@ const Profile = () => {
                 {userPosts.map((post) => (
                   <div key={post._id} className="col-sm-6">
                     <div className="post-card shadow-sm border-0 h-100 overflow-hidden bg-white">
-                      {/* Media logic: Agar video file extension hai to video tag dikhao */}
                       {(post.video || (post.fileUrl && post.fileUrl.match(/\.(mp4|webm|ogg)$|^uploads\/.*video/i))) ? (
                         <video 
                           src={getMediaUrl(post.video || post.fileUrl)} 
