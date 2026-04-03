@@ -13,7 +13,7 @@ const Profile = () => {
   const [loadingPosts, setLoadingPosts] = useState(true);
 
   // --- Backend Base URL Logic ---
-  const PF = import.meta.env.VITE_API_URL || "http://localhost:5000/";
+  const PF = import.meta.env.VITE_API_URL || "https://socialapp-back.onrender.com/";
 
   // Helper to get correct URL
   const getMediaUrl = (path) => {

@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // 1. Create Axios Instance with Base URL
 const axiosInstance = axios.create({
-    baseURL: 'http://localhost:5000/api' || 'http://localhost:5000/', // Backend ka URL
+    baseURL: 'https://socialapp-back.onrender.com/api' || 'https://socialapp-back.onrender.com/', // Backend ka URL
     headers: {
         'Content-Type': 'application/json',
     },
